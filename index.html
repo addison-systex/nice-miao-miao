@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐱 2026 南法之旅 喵喵喵 | Nice · Côte d'Azur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azure: #1A5F8C;
+  --azure-light: #2D87BF;
+  --coral: #E07A5F;
+  --cream: #FEF9F0;
+  --sand: #F0E8D8;
+  --charcoal: #2C2C3E;
+  --muted: #7A7A8C;
+  --border: #E0D8CC;
+  --gold: #C8964A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--charcoal); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; overflow-x: hidden; }
+
+/* HERO */
+.hero { position: relative; height: 100vh; min-height: 580px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=1600&q=85&auto=format&fit=crop') center 30% / cover; animation: heroPan 25s ease-in-out infinite alternate; }
+@keyframes heroPan { from { transform: scale(1.05); } to { transform: scale(1.1) translateX(-2%); } }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(26,95,140,.55) 0%, rgba(26,95,140,.2) 40%, rgba(44,44,62,.75) 100%); }
+.hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 900px; }
+.hero-cat { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0; animation: bounceIn .6s .2s forwards; }
+@keyframes bounceIn { 0% { opacity:0; transform:scale(.5) rotate(-10deg); } 60% { transform:scale(1.1) rotate(5deg); } 100% { opacity:1; transform:scale(1) rotate(0deg); } }
+.hero-label { font-size: .75rem; letter-spacing: .35em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 1rem; opacity: 0; animation: fadeUp .7s .4s forwards; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,7vw,6rem); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: .5rem; opacity: 0; animation: fadeUp .7s .6s forwards; text-shadow: 0 4px 20px rgba(0,0,0,.3); }
+.hero-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1rem,2.5vw,1.5rem); font-style: italic; color: rgba(255,255,255,.85); margin-bottom: 2.5rem; opacity: 0; animation: fadeUp .7s .8s forwards; }
+.hero-badges { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp .7s 1s forwards; }
+.hero-badge { background: rgba(255,255,255,.15); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.3); color: white; padding: .45rem 1rem; border-radius: 50px; font-size: .78rem; }
+.hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .5rem; color: rgba(255,255,255,.5); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; z-index: 2; opacity: 0; animation: fadeUp .7s 1.3s forwards; }
+.scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,.25); overflow: hidden; }
+.scroll-line::after { content:''; display:block; width:100%; height:50%; background:rgba(255,255,255,.8); animation: scrollDrop 2s ease-in-out infinite; }
+@keyframes scrollDrop { 0%{transform:translateY(-100%)} 100%{transform:translateY(200%)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* NAV */
+.day-nav { position: sticky; top: 0; z-index: 100; background: var(--azure); overflow-x: auto; scrollbar-width: none; box-shadow: 0 2px 12px rgba(26,95,140,.3); }
+.day-nav::-webkit-scrollbar { display: none; }
+.day-nav-inner { display: flex; min-width: max-content; }
+.day-nav-item { padding: .85rem 1.1rem; font-size: .68rem; letter-spacing: .08em; color: rgba(255,255,255,.5); cursor: pointer; border-bottom: 3px solid transparent; transition: all .25s; white-space: nowrap; text-decoration: none; font-weight: 500; }
+.day-nav-item:hover, .day-nav-item.active { color: white; border-bottom-color: var(--coral); background: rgba(255,255,255,.08); }
+
+/* OVERVIEW */
+.overview-strip { background: var(--sand); border-bottom: 1px solid var(--border); padding: 2rem 5vw; }
+.overview-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+.overview-text { flex: 1; min-width: 250px; }
+.overview-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem,3vw,1.9rem); margin-bottom: .4rem; }
+.overview-text p { color: var(--muted); font-size: .875rem; line-height: 1.7; }
+.overview-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+.stat { text-align: center; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--azure); line-height: 1; }
+.stat-label { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-top: .2rem; }
+.stat-divider { width: 1px; height: 2.5rem; background: var(--border); }
+
+/* ITINERARY */
+.itinerary { max-width: 1200px; margin: 0 auto; padding: 3rem 5vw 4rem; }
+.day-section { margin-bottom: 3.5rem; opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.day-section.visible { opacity: 1; transform: none; }
+.day-card { display: grid; grid-template-columns: 42% 58%; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(44,44,62,.1); background: white; }
+.day-card.flip { grid-template-columns: 58% 42%; }
+.day-card.flip .day-image-col { order: 2; }
+.day-card.flip .day-content { order: 1; }
+.day-image-col { position: relative; overflow: hidden; min-height: 360px; }
+.day-image-col img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.day-card:hover .day-image-col img { transform: scale(1.04); }
+.day-badge { position: absolute; top: 1.25rem; left: 1.25rem; display: flex; flex-direction: column; gap: .3rem; }
+.day-num { background: var(--coral); color: white; font-size: .62rem; font-weight: 600; letter-spacing: .15em; padding: .3rem .65rem; border-radius: 50px; text-transform: uppercase; }
+.transport-badge { background: rgba(44,44,62,.82); color: white; font-size: .58rem; padding: .2rem .6rem; border-radius: 50px; white-space: nowrap; }
+.day-content { padding: 1.75rem 1.75rem 1.5rem; display: flex; flex-direction: column; }
+.day-header { margin-bottom: .9rem; padding-bottom: .9rem; border-bottom: 1px solid var(--border); }
+.day-date { font-size: .63rem; letter-spacing: .2em; text-transform: uppercase; color: var(--azure-light); font-weight: 600; margin-bottom: .3rem; }
+.day-title { font-family: 'Playfair Display', serif; font-size: clamp(1.15rem,2vw,1.5rem); font-weight: 700; line-height: 1.25; }
+.transport-box { background: #EEF5FA; border-left: 3px solid var(--azure-light); border-radius: 0 8px 8px 0; padding: .65rem .9rem; margin-bottom: .9rem; font-size: .78rem; }
+.transport-box .t-title { font-weight: 600; font-size: .67rem; letter-spacing: .1em; text-transform: uppercase; color: var(--azure); margin-bottom: .25rem; }
+.transport-box p { color: var(--charcoal); line-height: 1.6; }
+.transport-box .t-warn { color: var(--coral); font-weight: 500; font-size: .73rem; margin-top: .3rem; }
+.schedule { flex: 1; margin-bottom: .9rem; }
+.schedule-item { display: grid; grid-template-columns: 4rem 1fr; gap: .65rem; padding: .6rem 0; border-bottom: 1px solid #F0EBE0; align-items: start; }
+.schedule-item:last-child { border-bottom: none; }
+.s-time { font-size: .67rem; color: var(--muted); padding-top: .1rem; font-weight: 500; }
+.s-name { font-size: .85rem; font-weight: 600; color: var(--charcoal); margin-bottom: .1rem; }
+.s-desc { font-size: .76rem; color: var(--muted); line-height: 1.5; }
+.day-tip { background: #FFF8EE; border: 1px solid #F0DEB8; border-radius: 8px; padding: .6rem .85rem; font-size: .76rem; color: #7A5C20; line-height: 1.55; margin-bottom: .9rem; }
+.map-buttons { display: flex; gap: .5rem; flex-wrap: wrap; }
+.btn-map { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .85rem; font-size: .68rem; font-weight: 600; letter-spacing: .04em; text-decoration: none; border-radius: 50px; transition: all .2s; white-space: nowrap; }
+.btn-map svg { width: 12px; height: 12px; flex-shrink: 0; }
+.btn-map-primary { background: var(--azure); color: white; }
+.btn-map-primary:hover { background: var(--azure-light); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,95,140,.3); }
+.btn-map-outline { background: white; color: var(--charcoal); border: 1.5px solid var(--border); }
+.btn-map-outline:hover { border-color: var(--azure); color: var(--azure); transform: translateY(-1px); }
+
+/* TRANSPORT TABLE */
+.transport-section { background: var(--charcoal); color: white; padding: 4rem 5vw; }
+.transport-section-inner { max-width: 1200px; margin: 0 auto; }
+.sec-heading { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem,3vw,2rem); margin-bottom: .4rem; }
+.sec-sub { color: rgba(255,255,255,.45); font-size: .85rem; margin-bottom: 2rem; }
+.t-table { width: 100%; border-collapse: collapse; font-size: .83rem; }
+.t-table th { text-align: left; padding: .7rem 1rem; font-size: .63rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.38); border-bottom: 1px solid rgba(255,255,255,.1); }
+.t-table td { padding: .8rem 1rem; border-bottom: 1px solid rgba(255,255,255,.07); color: rgba(255,255,255,.82); vertical-align: top; }
+.t-table tr:hover td { background: rgba(255,255,255,.05); }
+.t-tag { display: inline-flex; align-items: center; gap: .25rem; padding: .18rem .6rem; border-radius: 50px; font-size: .68rem; font-weight: 600; }
+.tag-train { background: rgba(61,125,191,.25); color: #7BB8F0; }
+.tag-tram { background: rgba(224,122,95,.25); color: #F0A48C; }
+.tag-bus { background: rgba(107,170,85,.25); color: #8ECC70; }
+.ticket-tips { margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1rem; }
+.ticket-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 1.2rem; }
+.ticket-card h4 { font-size: .88rem; color: var(--coral); margin-bottom: .45rem; }
+.ticket-card p { font-size: .78rem; color: rgba(255,255,255,.58); line-height: 1.65; }
+.ticket-card strong { color: rgba(255,255,255,.82); }
+
+/* FOOTER */
+footer { background: #1C1C2E; color: rgba(255,255,255,.35); text-align: center; padding: 2.5rem 2rem; font-size: .8rem; }
+footer .fc { font-size: 1.5rem; margin-bottom: .5rem; }
+footer strong { color: var(--coral); font-weight: 500; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .day-card, .day-card.flip { grid-template-columns: 1fr; }
+  .day-card.flip .day-image-col, .day-card.flip .day-content { order: unset; }
+  .day-image-col { min-height: 220px; }
+  .day-content { padding: 1.35rem; }
+  .overview-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .stat-divider { display: none; }
+  .t-table { font-size: .74rem; }
+  .t-table th, .t-table td { padding: .55rem .6rem; }
+}
+@media (max-width: 480px) {
+  .map-buttons { flex-direction: column; }
+  .btn-map { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-cat">🐱🌊🍷</div>
+    <div class="hero-label">2026 · Apr 30 – May 9 · 9天8夜</div>
+    <h1 class="hero-title">南法之旅<br>喵喵喵</h1>
+    <p class="hero-subtitle">Nice · Côte d'Azur · Monaco · Provence</p>
+    <div class="hero-badges">
+      <span class="hero-badge">✈ Emirates EK367 + EK077</span>
+      <span class="hero-badge">🌊 尼斯為主基地</span>
+      <span class="hero-badge">🧳 手提10KG + 托運20KG</span>
+      <span class="hero-badge">🍷 海岸 + 美食主題</span>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<nav class="day-nav">
+  <div class="day-nav-inner">
+    <a class="day-nav-item active" href="#day1">Day 1 · 台北出發</a>
+    <a class="day-nav-item" href="#day2">Day 2 · 抵達尼斯</a>
+    <a class="day-nav-item" href="#day3">Day 3 · 尼斯市區</a>
+    <a class="day-nav-item" href="#day4">Day 4 · 昂提比斯+坎城</a>
+    <a class="day-nav-item" href="#day5">Day 5 · 酒莊半日遊</a>
+    <a class="day-nav-item" href="#day6">Day 6 · 芒通</a>
+    <a class="day-nav-item" href="#day7">Day 7 · 埃茲+摩納哥</a>
+    <a class="day-nav-item" href="#day8">Day 8 · 普羅旺斯</a>
+    <a class="day-nav-item" href="#day9">Day 9 · 返程</a>
+  </div>
+</nav>
+
+<div class="overview-strip">
+  <div class="overview-inner">
+    <div class="overview-text">
+      <h2>🐱 蔚藍海岸深度之旅</h2>
+      <p>以尼斯為基地，探索法國南部蔚藍海岸的精華。從五彩繽紛的芒通到浮華璀璨的摩納哥，從懸崖上的埃茲古村到薰衣草飄香的普羅旺斯。Emirates 帶你飛往南法，品味最美好的地中海風情。</p>
+    </div>
+    <div class="overview-stats">
+      <div class="stat"><div class="stat-num">9</div><div class="stat-label">天數</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">城市</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">景點</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">EK</div><div class="stat-label">航空</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="itinerary">
+
+<!-- DAY 1 -->
+<div class="day-section" id="day1">
+  <div class="day-card">
+    <div class="day-image-col">
+      <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80&auto=format&fit=crop" alt="台北出發" loading="lazy">
+      <div class="day-badge"><span class="day-num">Day 01</span><span class="transport-badge">✈ EK367</span></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">4月30日（四）· 台北 → 杜拜</div>
+        <h2 class="day-title">出發！飛往南法的起點</h2>
+      </div>
+      <div class="transport-box">
+        <div class="t-title">✈ 今日交通</div>
+        <p><strong>EK367</strong> 桃園(TPE) → 杜拜(DXB)<br>出發 23:05｜飛行約 9 小時 30 分，翌日 05:05 抵達杜拜</p>
+      </div>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="s-time">21:05</span>
+          <div><div class="s-name">機場 Check-in</div><div class="s-desc">Emirates 櫃台報到，建議提前 3 小時抵達桃園機場</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">23:05</span>
+          <div><div class="s-name">✈ EK367 起飛</div><div class="s-desc">桃園(TPE) → 杜拜(DXB)，飛行約 9h30m，翌日 05:05 抵達</div></div>
+        </div>
+      </div>
+      <div class="day-tip">💡 出發前確認行李重量！手提 10KG + 托運 20KG。Klook 酒莊活動記得提前購票！</div>
+      <div class="map-buttons">
+        <a href="https://www.google.com/maps/search/?api=1&query=Taiwan+Taoyuan+International+Airport" target="_blank" class="btn-map btn-map-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>桃園國際機場
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="day-section" id="day2">
+  <div class="day-card flip">
+    <div class="day-image-col">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop" alt="尼斯" loading="lazy">
+      <div class="day-badge"><span class="day-num">Day 02</span><span class="transport-badge">✈ EK077 + 🚃 Tram 2</span></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5月1日（五）· 杜拜 → 尼斯</div>
+        <h2 class="day-title">抵達蔚藍海岸<br>Bienvenue à Nice！</h2>
+      </div>
+      <div class="transport-box">
+        <div class="t-title">✈🚃 今日交通</div>
+        <p><strong>EK077</strong> 杜拜(DXB) → 尼斯(NCE) 08:40 起飛，13:30 抵達<br>
+        <strong>機場→市區：</strong>出航廈搭 Tram 2/3 → Grand Arénas（免費）→ 售票機購 La Carte 儲值卡(€2押金可退) → 繼續搭 Tram 2 方向 Port Lympia → Jean Médecin 站（約 25-30 分）</p>
+        <div class="t-warn">⚠️ 搭「Aéroport」方向，不要搭「CADAM」方向！</div>
+      </div>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="s-time">04:35</span>
+          <div><div class="s-name">杜拜機場轉機</div><div class="s-desc">機場用早餐、稍作休息，準備搭乘下一段航班</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">08:40</span>
+          <div><div class="s-name">✈ EK077 起飛</div><div class="s-desc">杜拜→尼斯，飛行約 6 小時，13:30 抵達 NCE</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">13:30</span>
+          <div><div class="s-name">抵達尼斯機場 NCE</div><div class="s-desc">出航廈 → Tram 2/3 → Grand Arénas（免費）→ 購 La Carte → 進市區</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">下午</span>
+          <div><div class="s-name">入住飯店 · 休息</div><div class="s-desc">放行李後輕鬆散步，熟悉尼斯周邊環境</div></div>
+        </div>
+      </div>
+      <div class="day-tip">💡 省錢技巧：機場售票機只賣來回票 €10，在 Grand Arénas 站的機器才能買到 La Carte 單程 €1.70。可考慮購買 SudAzur Explore Pass（7天無限搭乘，強烈推薦）。</div>
+      <div class="map-buttons">
+        <a href="https://www.google.com/maps/search/?api=1&query=Nice+Cote+d'Azur+Airport+NCE" target="_blank" class="btn-map btn-map-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>尼斯機場 NCE
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Grand+Arenas+tram+stop+Nice" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Grand Arénas 售票機
+        </a>
+        <a href="https://maps.app.goo.gl/M8dANH4KEz2ZZLwM6" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>🏨 住宿位置
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="day-section" id="day3">
+  <div class="day-card">
+    <div class="day-image-col">
+      <img src="https://images.unsplash.com/photo-1569949381669-ecf31ae8eca3?w=800&q=80&auto=format&fit=crop" alt="尼斯老城" loading="lazy">
+      <div class="day-badge"><span class="day-num">Day 03</span><span class="transport-badge">🚶 步行為主</span></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5月2日（六）· 尼斯市區</div>
+        <h2 class="day-title">尼斯巡禮<br>花市・老城・城堡山</h2>
+      </div>
+      <div class="transport-box">
+        <div class="t-title">🚶 今日交通 — 步行為主</div>
+        <p>老城區→花市→城堡山→散步道全程步行可達。電車 Tram 1 輔助長距移動（€1.70/次，La Carte 刷卡）</p>
+      </div>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="s-time">08:30</span>
+          <div><div class="s-name">Cours Saleya 花市</div><div class="s-desc">露天市場，週二至週日 07:00-13:30 開市，鮮花蔬果繽紛熱鬧</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">10:30</span>
+          <div><div class="s-name">尼斯老城區 Vieille Ville</div><div class="s-desc">巴洛克教堂、彩色外牆、迷宮小巷，到處都是驚喜</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">午餐</span>
+          <div><div class="s-name">🍽 Chez Acchiardo ⭐4.7</div><div class="s-desc">週六有開，強烈建議提前訂位！傳統尼斯料理</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">下午</span>
+          <div><div class="s-name">英國人散步道 + CoCo Beach 🏖</div><div class="s-desc">海灘游泳，礁石海灘記得帶水上鞋</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">傍晚</span>
+          <div><div class="s-name">城堡山 Colline du Château</div><div class="s-desc">搭免費電梯上山，俯瞰整個尼斯灣絕景日落</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">晚餐</span>
+          <div><div class="s-name">🍽 Le Panier ⭐4.8</div><div class="s-desc">強烈建議提前預訂！週六有開</div></div>
+        </div>
+      </div>
+      <div class="map-buttons">
+        <a href="https://www.google.com/maps/search/?api=1&query=Cours+Saleya+Nice+France" target="_blank" class="btn-map btn-map-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Cours Saleya 花市
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Colline+du+Chateau+Nice+elevator" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>城堡山免費電梯
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Promenade+des+Anglais+Nice" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>英國人散步道
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 4 -->
+<div class="day-section" id="day4">
+  <div class="day-card flip">
+    <div class="day-image-col">
+      <img src="https://images.unsplash.com/photo-1490077476659-095159692aea?w=800&q=80&auto=format&fit=crop" alt="Antibes Cannes" loading="lazy">
+      <div class="day-badge"><span class="day-num">Day 04</span><span class="transport-badge">🚆 TER 火車</span></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5月3日（日）· 昂提比斯 + 坎城</div>
+        <h2 class="day-title">沿海雙城記<br>Antibes · Cannes</h2>
+      </div>
+      <div class="transport-box">
+        <div class="t-title">🚆 今日交通 — TER 火車</div>
+        <p>
+          <strong>尼斯→昂提比斯：</strong>Nice-Ville → Antibes，約 25 分，€5/人，每 30 分一班（方向 Cannes）<br>
+          <strong>昂提比斯→坎城：</strong>Antibes → Cannes，約 15 分，€3.50/人<br>
+          <strong>坎城→尼斯返回：</strong>Cannes → Nice，約 40 分，€7/人，建議 17:00-18:00 搭車
+        </p>
+      </div>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="s-time">09:00前</span>
+          <div><div class="s-name">出發 Nice-Ville 火車站</div><div class="s-desc">TER 火車方向 Cannes / Marseille，到站後出站步行約 10 分到舊城區</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">上午</span>
+          <div><div class="s-name">昂提比斯 Antibes</div><div class="s-desc">Picasso 博物館（需訂票）、老城區、Cap d'Antibes 海灘</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">午餐</span>
+          <div><div class="s-name">昂提比斯市區用餐</div><div class="s-desc">嘗試普羅旺斯料理</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">下午</span>
+          <div><div class="s-name">坎城 Cannes</div><div class="s-desc">La Croisette 大道、Zamenhof 免費海灘（5月初為安靜季節）</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">17:00-18:00</span>
+          <div><div class="s-name">TER 返回尼斯</div><div class="s-desc">Cannes → Nice-Ville，約 40 分，避開尖峰人潮</div></div>
+        </div>
+      </div>
+      <div class="day-tip">💡 5月3日是週日！Antibes Picasso 博物館週一公休（週日開放）。TER 票可在 SNCF Connect 或 Trainline App 提前購買或站內自動售票機購票。</div>
+      <div class="map-buttons">
+        <a href="https://www.google.com/maps/search/?api=1&query=Gare+de+Nice+Ville+train+station" target="_blank" class="btn-map btn-map-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Nice-Ville 火車站
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Musee+Picasso+Antibes" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Picasso 博物館
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=La+Croisette+Cannes+France" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>坎城 La Croisette
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 5 -->
+<div class="day-section" id="day5">
+  <div class="day-card">
+    <div class="day-image-col">
+      <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80&auto=format&fit=crop" alt="酒莊" loading="lazy">
+      <div class="day-badge"><span class="day-num">Day 05</span><span class="transport-badge">🍷 Klook 導覽</span></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5月4日（一）· 酒莊半日遊</div>
+        <h2 class="day-title">尼斯克雷馬特城堡<br>葡萄酒品鑑之旅 🍷</h2>
+      </div>
+      <div class="transport-box">
+        <div class="t-title">🍷 今日交通 — Klook 行程</div>
+        <p><strong>集合地點：</strong>確認 Klook 訂單內說明，通常在 Nice Vauban 巴士站或尼斯市中心<br>
+        <strong>電車輔助：</strong>搭 Tram 1 到 Vauban 站（€1.70）或依訂單指示</p>
+        <div class="t-warn">⚠️ 🎟 Klook 尚未購票 — 請儘快購買！搜尋「Nice Chateau Bellet」</div>
+      </div>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="s-time">上午</span>
+          <div><div class="s-name">🍷 克雷馬特城堡酒莊半日遊（Klook）</div><div class="s-desc">小團葡萄酒品鑑，體驗南法著名的 Bellet AOC 葡萄酒</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">下午</span>
+          <div><div class="s-name">自由活動</div><div class="s-desc">Matisse 美術館（Tram 1 → Liberation → Bus 33）或海灘放鬆</div></div>
+        </div>
+      </div>
+      <div class="day-tip">💡 週一好消息：Chez Acchiardo 週一有開（12:00-14:00 / 19:00-22:00），是補訂的好機會！</div>
+      <div class="map-buttons">
+        <a href="https://www.google.com/maps/search/?api=1&query=Chateau+de+Cremat+Nice+winery" target="_blank" class="btn-map btn-map-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>克雷馬特城堡
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Musee+Matisse+Nice" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Matisse 美術館
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Station+Vauban+Nice+tram" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Vauban 電車站
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 6 -->
+<div class="day-section" id="day6">
+  <div class="day-card flip">
+    <div class="day-image-col">
+      <img src="https://images.unsplash.com/photo-1596394723269-b2cbca4e6313?w=800&q=80&auto=format&fit=crop" alt="Menton" loading="lazy">
+      <div class="day-badge"><span class="day-num">Day 06</span><span class="transport-badge">🚆 TER 方向 Ventimiglia</span></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5月5日（二）· 芒通 Menton</div>
+        <h2 class="day-title">檸檬之城芒通<br>法義邊境的彩色夢境 🍋</h2>
+      </div>
+      <div class="transport-box">
+        <div class="t-title">🚆 今日交通 — TER 火車</div>
+        <p>
+          <strong>去程：</strong>Nice-Ville → Menton（方向 Ventimiglia），約 35 分，€5/人，每 30-60 分一班，建議 09:00-09:30 出發<br>
+          <strong>返程：</strong>Menton → Nice-Ville，建議 16:30-17:30 搭車，€5/人
+        </p>
+      </div>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="s-time">09:00-09:30</span>
+          <div><div class="s-name">出發 Nice-Ville 火車站</div><div class="s-desc">讓整個上午都在芒通，到站步行 5 分即到舊城區入口</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">上午</span>
+          <div><div class="s-name">芒通舊城區</div><div class="s-desc">聖米歇爾教堂廣場（必拍！），彩色建築群倒映地中海光影</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">午餐</span>
+          <div><div class="s-name">🍋 必吃檸檬塔 Tarte au Citron</div><div class="s-desc">芒通以檸檬聞名，各家甜點店都值得嘗試</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">下午</span>
+          <div><div class="s-name">Plage des Sablettes 海灘</div><div class="s-desc">白色細沙灘，5月初海水微涼但景色絕美</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">下午（可選）</span>
+          <div><div class="s-name">Jean Cocteau 博物館</div><div class="s-desc">紀念畫家 Cocteau，門票 €10</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">16:30-17:30</span>
+          <div><div class="s-name">TER 返回尼斯</div><div class="s-desc">Menton → Nice-Ville，約 35 分</div></div>
+        </div>
+      </div>
+      <div class="day-tip">💡 芒通離義大利邊境只有 3 公里！再搭 10 分鐘就到義大利 Ventimiglia，週五有大市集，有興趣可短暫越境！</div>
+      <div class="map-buttons">
+        <a href="https://www.google.com/maps/search/?api=1&query=Place+Saint-Michel+Menton+France" target="_blank" class="btn-map btn-map-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>聖米歇爾教堂廣場
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Plage+des+Sablettes+Menton" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Sablettes 海灘
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Gare+de+Menton" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>芒通火車站
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 7 -->
+<div class="day-section" id="day7">
+  <div class="day-card">
+    <div class="day-image-col">
+      <img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&q=80&auto=format&fit=crop" alt="Monaco" loading="lazy">
+      <div class="day-badge"><span class="day-num">Day 07</span><span class="transport-badge">🚌 Bus 82/602 + 🚆 TER</span></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5月6日（三）· 埃茲 + 摩納哥</div>
+        <h2 class="day-title">懸崖古村埃茲<br>璀璨摩納哥王國</h2>
+      </div>
+      <div class="transport-box">
+        <div class="t-title">🚌🚆 今日交通 — 去程巴士 + 回程火車（景觀制霸！）</div>
+        <p>
+          <strong>尼斯→埃茲：</strong>Tram 1 → Vauban 站（€1.70）→ 過鐵路隧道到巴士站 → Bus 82 或 602（約 30-40 分，€1.70）<br>
+          <strong>埃茲→摩納哥：</strong>Eze Village 站等 Bus 602 繼續前行（約 20 分，€2.50 向司機另購）<br>
+          <strong>摩納哥→尼斯：</strong>Monaco-Monte Carlo 站 TER（約 20 分，€4）或 Bus 600（€1.70，每 15 分一班）
+        </p>
+        <div class="t-warn">⚠️ 不要搭 Bus 600 去埃茲！600 只到海邊的 Èze-sur-Mer，要搭 82 或 602 才是山上的 Èze Village！<br>⚠️ 進入摩納哥 Bus 602 需向司機另購票 €2.50，La Carte 在摩納哥境內無效！</div>
+      </div>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="s-time">09:00前</span>
+          <div><div class="s-name">出發往埃茲</div><div class="s-desc">越早越涼快人也少！Tram 1 → Vauban 站 → 過隧道 → Bus 82/602</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">上午</span>
+          <div><div class="s-name">埃茲古村 Èze Village</div><div class="s-desc">石板小巷、工藝品店、Fragonard 香水工廠參觀（免費入場）</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">上午</span>
+          <div><div class="s-name">埃茲異國花園 Jardin Exotique ⭐4.7</div><div class="s-desc">仙人掌花園，360度地中海全景，門票 €7（記得帶信用卡）</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">午餐</span>
+          <div><div class="s-name">埃茲景觀餐廳</div><div class="s-desc">幾間景觀餐廳，建議提前訂位</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">下午</span>
+          <div><div class="s-name">摩納哥 Monaco</div><div class="s-desc">親王宮 Prince's Palace、摩納哥岩石區、蒙特卡洛廣場</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">下午（可選）</span>
+          <div><div class="s-name">摩納哥海洋博物館 ⭐4.5</div><div class="s-desc">開放至 19:00，門票 €18</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">傍晚</span>
+          <div><div class="s-name">TER 返回尼斯</div><div class="s-desc">Monaco-Monte Carlo 站（岩石下方有電梯）→ Nice-Ville，約 20 分</div></div>
+        </div>
+      </div>
+      <div class="day-tip">💡 去程搭巴士走 Corniche Moyenne 中級海岸公路，景色超美！回程搭火車，兩種方式都玩到。坐巴士記得坐右側靠窗！</div>
+      <div class="map-buttons">
+        <a href="https://www.google.com/maps/search/?api=1&query=Eze+Village+France+hilltop" target="_blank" class="btn-map btn-map-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>埃茲古村
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Jardin+Exotique+Eze+France" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>埃茲異國花園
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Musee+Oceanographique+Monaco" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>摩納哥海洋博物館
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Monaco+Monte+Carlo+train+station" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>摩納哥火車站
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 8 -->
+<div class="day-section" id="day8">
+  <div class="day-card flip">
+    <div class="day-image-col">
+      <img src="https://images.unsplash.com/photo-1465189684280-6a8fa9b19a7a?w=800&q=80&auto=format&fit=crop" alt="Provence" loading="lazy">
+      <div class="day-badge"><span class="day-num">Day 08</span><span class="transport-badge">🎟 GetYourGuide / 自由行</span></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5月7日（四）· 普羅旺斯 或 尼斯自由</div>
+        <h2 class="day-title">薰衣草的故鄉<br>普羅旺斯 or 尼斯自遊 🌿</h2>
+      </div>
+      <div class="transport-box">
+        <div class="t-title">🎟 今日交通 — 兩種選擇</div>
+        <p>
+          <strong>選項 A：GetYourGuide 普羅旺斯一日遊</strong> — 依訂單指示前往集合點，交通含在行程內<br>
+          <strong>選項 B：尼斯自由活動</strong> — Matisse（Tram 1 → Liberation → Bus 33）｜Chagall（Tram 1 → Liberation → 步行 15 分）
+        </p>
+      </div>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="s-time">全天</span>
+          <div><div class="s-name">🌿 選項A：普羅旺斯中世紀村莊一日遊</div><div class="s-desc">GetYourGuide 行程，薰衣草、石頭小村、普羅旺斯美食，確認訂單集合地點</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">— 或 —</span>
+          <div><div class="s-name">🎨 選項B：尼斯博物館 & 購物</div><div class="s-desc">Matisse / Chagall 美術館、Avenue Jean Médecin 商圈採購伴手禮</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">傍晚</span>
+          <div><div class="s-name">最後一次英國人散步道日落</div><div class="s-desc">道別地中海，回飯店打包行李，確認行李重量</div></div>
+        </div>
+      </div>
+      <div class="day-tip">💡 明天（DAY 9）15:50 出發去機場！今晚記得整理行李、確認重量（手提 10KG + 托運 20KG），南法伴手禮（橄欖油、薰衣草、陶瓷）要留意超重！</div>
+      <div class="map-buttons">
+        <a href="https://www.getyourguide.com/zh-tw/nice-l314/nice-countryside-tour-t197383/" target="_blank" class="btn-map btn-map-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>GetYourGuide 訂票
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Musee+national+Marc+Chagall+Nice" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Chagall 博物館
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Avenue+Jean+Medecin+Nice+shopping" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Jean Médecin 商圈
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 9 -->
+<div class="day-section" id="day9">
+  <div class="day-card">
+    <div class="day-image-col">
+      <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80&auto=format&fit=crop" alt="返程" loading="lazy">
+      <div class="day-badge"><span class="day-num">Day 09</span><span class="transport-badge">🚃 Tram 2 + ✈ EK</span></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div class="day-date">5月8日（五）· 返程</div>
+        <h2 class="day-title">Au Revoir, Nice！<br>帶著記憶回家 🐱</h2>
+      </div>
+      <div class="transport-box">
+        <div class="t-title">🚃✈ 今日交通</div>
+        <p>
+          <strong>市區→機場：</strong>電車 Tram 2，方向 Aéroport T1/T2，€1.70，每 7-10 分一班，從 Jean Médecin 站約 25-30 分<br>
+          <strong>建議時間：</strong>15:50 班機 → 12:30 前抵達機場（提前 3 小時，國際線需較多時間）
+        </p>
+        <div class="t-warn">⚠️ 搭「Aéroport T1/T2」方向，不要搭「CADAM」方向！</div>
+      </div>
+      <div class="schedule">
+        <div class="schedule-item">
+          <span class="s-time">早晨</span>
+          <div><div class="s-name">最後英國人散步道晨間散步</div><div class="s-desc">告別地中海，咖啡廳早餐，享受最後的南法時光</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">上午</span>
+          <div><div class="s-name">最後採購 🛍</div><div class="s-desc">伴手禮最後機會！注意行李重量（橄欖油、薰衣草、陶瓷、糖果）</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">12:30前</span>
+          <div><div class="s-name">抵達尼斯機場 NCE</div><div class="s-desc">搭 Tram 2 → 機場，辦理 Emirates Check-in 及行李托運</div></div>
+        </div>
+        <div class="schedule-item">
+          <span class="s-time">15:50</span>
+          <div><div class="s-name">✈ EK 尼斯 → 杜拜</div><div class="s-desc">NCE → DXB，飛行約 6 小時，23:59 抵達杜拜。Bon voyage！🐱</div></div>
+        </div>
+      </div>
+      <div class="day-tip">💡 回程行李 10KG+20KG，採購的南法伴手禮記得事先秤重！La Carte 儲值卡記得在機場退押金 €2。</div>
+      <div class="map-buttons">
+        <a href="https://www.google.com/maps/search/?api=1&query=Nice+Cote+d'Azur+Airport+NCE" target="_blank" class="btn-map btn-map-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>尼斯機場 NCE
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Jean+Medecin+tram+stop+Nice" target="_blank" class="btn-map btn-map-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Jean Médecin Tram 2 站
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- TRANSPORT TABLE -->
+<section class="transport-section">
+  <div class="transport-section-inner">
+    <h2 class="sec-heading">🚆 蔚藍海岸交通速查表</h2>
+    <p class="sec-sub">Complete Transportation Reference · Côte d'Azur</p>
+    <table class="t-table">
+      <thead>
+        <tr><th>路線</th><th>交通方式</th><th>車程</th><th>票價</th><th>備註</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>機場 → 尼斯市區</td><td><span class="t-tag tag-tram">🚃 Tram 2</span></td><td>25-30 分</td><td>€1.70</td><td>先到 Grand Arénas 免費，方向 Port Lympia</td></tr>
+        <tr><td>尼斯 → 昂提比斯</td><td><span class="t-tag tag-train">🚆 TER</span></td><td>25 分</td><td>€5</td><td>每 30 分一班，方向 Cannes</td></tr>
+        <tr><td>尼斯 → 坎城</td><td><span class="t-tag tag-train">🚆 TER</span></td><td>40 分</td><td>€7</td><td>每 30 分一班</td></tr>
+        <tr><td>尼斯 → 芒通</td><td><span class="t-tag tag-train">🚆 TER</span></td><td>35 分</td><td>€5</td><td>方向 Ventimiglia（義大利方向）</td></tr>
+        <tr><td>尼斯 → 摩納哥</td><td><span class="t-tag tag-train">🚆 TER</span></td><td>20 分</td><td>€4</td><td>每 20-30 分一班</td></tr>
+        <tr><td>尼斯 → 埃茲古村</td><td><span class="t-tag tag-bus">🚌 Bus 82/602</span></td><td>30-40 分</td><td>€1.70</td><td>⚠️ 從 Vauban 站搭，勿搭 Bus 600！</td></tr>
+        <tr><td>埃茲 → 摩納哥</td><td><span class="t-tag tag-bus">🚌 Bus 602 續程</span></td><td>20 分</td><td>€2.50</td><td>⚠️ 向司機另購票，La Carte 在摩納哥無效</td></tr>
+        <tr><td>摩納哥 → 尼斯</td><td><span class="t-tag tag-train">🚆 TER</span></td><td>20 分</td><td>€4</td><td>Monaco-Monte Carlo 站有電梯，或 Bus 600 €1.70</td></tr>
+        <tr><td>市區 → 機場</td><td><span class="t-tag tag-tram">🚃 Tram 2</span></td><td>25-30 分</td><td>€1.70</td><td>⚠️ 方向「Aéroport T1/T2」，勿搭 CADAM 方向</td></tr>
+      </tbody>
+    </table>
+    <div class="ticket-tips">
+      <div class="ticket-card">
+        <h4>🎫 La Carte 儲值卡</h4>
+        <p>€2 押金可退，單次 €1.70。在機場 Grand Arénas 或各電車站購買。<strong>注意：摩納哥境內無效！</strong></p>
+      </div>
+      <div class="ticket-card">
+        <h4>🎫 SudAzur Explore Pass</h4>
+        <p>3天/7天無限搭乘，涵蓋 TER 火車＋電車＋巴士＋摩納哥，在機場 Grand Arénas 售票機購買。<strong>9天旅程強烈推薦！</strong></p>
+      </div>
+      <div class="ticket-card">
+        <h4>📱 必備 App</h4>
+        <p><strong>SNCF Connect</strong> / Trainline — TER 訂票<br><strong>Lignes d'Azur（TramTix）</strong> — 電車手機刷卡<br><strong>Google Maps</strong> — 出發前下載南法離線地圖</p>
+      </div>
+      <div class="ticket-card">
+        <h4>🎟 活動訂票提醒</h4>
+        <p><strong style="color:#F0A48C">Klook 克雷馬特城堡酒莊 ⚠️ 尚未購票</strong>，請儘快！<br><strong>GetYourGuide</strong> 普羅旺斯一日遊，確認是否參加</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">🐱🌊🍷</div>
+  <p><strong>2026 南法之旅 喵喵喵</strong> · Apr 30 – May 9, 2026 · 9天8夜</p>
+  <p style="margin-top:.4rem">Nice · Antibes · Cannes · Menton · Èze · Monaco · Provence</p>
+  <p style="margin-top:.4rem">Bon voyage! 旅途愉快喵～ 🐾</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.day-section').forEach(el => obs.observe(el));
+
+const navItems = document.querySelectorAll('.day-nav-item');
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      navItems.forEach(n => n.classList.toggle('active', n.getAttribute('href') === '#' + id));
+    }
+  });
+}, { threshold: 0.35 });
+document.querySelectorAll('.day-section[id]').forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
